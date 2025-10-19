@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import linkedin from "../assets/linkedin.svg";
+---
+
+<Layout>
+    <div class="m-auto justify-center text-center items-center">
+        <h1 class="m-auto text-8xl text-orange-400 pt-32">
+            <b>Caleb O'Neal</b>
+        </h1>
+        <div
+            class="my-8 box-border hover:border-orange-300 border-2 border-transparent shadow-stone-500 shadow-md rounded-md m-auto w-80 flex"
+        >
+            <Image
+                src={linkedin}
+                alt="The LinkedIn Logo"
+                height="40"
+                width="40"
+            />
+            <h2>LinkedIn</h2>
+        </div>
+    </div>
+</Layout>
