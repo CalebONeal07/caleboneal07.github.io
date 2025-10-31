@@ -1,24 +1,28 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import linkedin from "../assets/linkedin.svg";
 ---
 
 <Layout>
-    <div class="m-auto justify-center text-center items-center">
-        <h1 class="m-auto text-8xl text-orange-400 pt-32">
-            <b>Caleb O'Neal</b>
-        </h1>
-        <div
-            class="my-8 box-border hover:border-orange-300 border-2 border-transparent shadow-stone-500 shadow-md rounded-md m-auto w-80 flex"
+    <main class="">
+        <!-- Hero Section -->
+        <section
+            id="hero"
+            class="flex flex-col justify-between items-center text-center h-screen"
         >
-            <Image
-                src={linkedin}
-                alt="The LinkedIn Logo"
-                height="40"
-                width="40"
-            />
-            <h2>LinkedIn</h2>
-        </div>
-    </div>
+            <div class="mb-auto mt-auto">
+                <h1 class="text-8xl font-bold mb-4">Caleb O'Neal</h1>
+                <h3 class="text-lg">student</h3>
+            </div>
+            <a
+                href="#content"
+                class="mb-4 px-6 font-bold py-3 bg-white/30 bg-blur-md rounded-lg text-white"
+            >
+                Scroll
+            </a>
+        </section>
+        <hr class="mx-8" />
+        <section id="content">
+            <p>Here's some text</p>
+        </section>
+    </main>
 </Layout>

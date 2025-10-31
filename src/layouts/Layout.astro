@@ -3,15 +3,18 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en" class="m-0 w-full h-full">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Caleb O'Neal's Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio | Computer Engineering Student</title>
     </head>
-    <body class="m-0 w-full h-full bg-orange-50">
+    <body
+        class="bg-gray-950 text-gray-400 min-h-screen flex flex-col font-sans no-scrollbar"
+    >
         <slot />
+        <footer class="py-6 text-center text-gray-500 text-sm">
+            Copywright © 2025 Caleb O'Neal
+        </footer>
     </body>
 </html>
