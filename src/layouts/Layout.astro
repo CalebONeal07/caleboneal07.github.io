@@ -1,5 +1,13 @@
 ---
-import "../styles/global.css";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+import MatrixBackground from "../components/MatrixBackground.astro";
+
+// Fonts
+import "@fontsource/ibm-plex-serif";
+import "@fontsource-variable/ibm-plex-sans";
+import "@fontsource/ibm-plex-mono";
+
+import "../styles/theme.css";
 ---
 
 <!doctype html>
@@ -7,14 +15,17 @@ import "../styles/global.css";
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portfolio | Computer Engineering Student</title>
+        <title>Caleb O'Neal | Portfolio</title>
+        <link rel="icon" type="image/svg" href="/favicon.svg" />
     </head>
-    <body
-        class="bg-gray-950 text-gray-400 min-h-screen flex flex-col font-sans no-scrollbar"
-    >
+    <body class="bg-zinc-200 dark:bg-zinc-900">
+        <ThemeSwitcher />
+        <MatrixBackground />
         <slot />
-        <footer class="py-6 text-center text-gray-500 text-sm">
-            Copywright © 2025 Caleb O'Neal
+        <footer class="text-center pb-4">
+            <p class="text-xs text-zinc-400 dark:text-zinc-700">
+                Copywright © 2025 Caleb O'Neal
+            </p>
         </footer>
     </body>
 </html>

@@ -1,0 +1,31 @@
+---
+const sections = [
+    { id: "about-me", title: "About Me" },
+    { id: "experience", title: "Experience" },
+    { id: "projects", title: "Projects" },
+    { id: "skills", title: "Skills" },
+    { id: "education", title: "Education" },
+];
+---
+
+<div class="fixed align-middle left-8 border-l border-zinc-400 text-left">
+    {
+        sections.map((item) => (
+            <>
+                <a
+                    href={`#${item.id}`}
+                    class="inline-flex align-middle px-3 py-4 text-zinc-600 hover:text-zinc-400 rounded-r-lg transition-colors"
+                >
+                    {item.title}
+                </a>
+                <br />
+            </>
+        ))
+    }
+</div>
+<style>
+    div {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+</style>

@@ -1,28 +1,73 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SocialLink from "../components/SocialLink.astro";
+import SectionScroll from "../components/SectionScroll.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+
+import LinkedIn from "../assets/logos/linkedin.svg";
+import GitHub from "../assets/logos/github.svg";
+import X from "../assets/logos/twitter.svg";
+import Blog from "../assets/logos/blog.svg";
+import Email from "../assets/logos/email.svg";
+import Resume from "../assets/logos/resume.svg";
 ---
 
 <Layout>
-    <main class="">
-        <!-- Hero Section -->
-        <section
-            id="hero"
-            class="flex flex-col justify-between items-center text-center h-screen"
-        >
-            <div class="mb-auto mt-auto">
-                <h1 class="text-8xl font-bold mb-4">Caleb O'Neal</h1>
-                <h3 class="text-lg">student</h3>
-            </div>
-            <a
-                href="#content"
-                class="mb-4 px-6 font-bold py-3 bg-white/30 bg-blur-md rounded-lg text-white"
-            >
-                Scroll
-            </a>
-        </section>
-        <hr class="mx-8" />
-        <section id="content">
-            <p>Here's some text</p>
-        </section>
+    <main
+        id="main"
+        class="flex font-mono flex-col dark:text-zinc-400 text-zinc-900 items-center pt-16"
+    >
+        <SectionScroll />
+        <ScrollToTop />
+        <div class="w-4xl">
+            <section id="title">
+                <h1 class="text-6xl mt-8 mb-4">Caleb O'Neal</h1>
+                <SocialLink link="https://linkedin.com/in/caleboneal2007">
+                    <LinkedIn width={24} height={24} />
+                    <p class="ml-2">LinkedIn</p>
+                </SocialLink>
+                <SocialLink link="https://github.com/CalebONeal07">
+                    <GitHub width={24} height={24} />
+                    <p class="ml-2">GitHub</p>
+                </SocialLink>
+                <SocialLink link="https://x.com/CalebONeal07">
+                    <X width={24} height={24} />
+                    <p class="ml-2">Twitter</p>
+                </SocialLink>
+                <SocialLink link="/blog">
+                    <Blog width={24} height={24} />
+                    <p class="ml-2">Blog</p>
+                </SocialLink>
+                <SocialLink link="mailto:caleboneal07@gmail.com">
+                    <Email width={24} height={24} />
+                    <p class="ml-2">Email</p>
+                </SocialLink>
+                <SocialLink link="/resume.pdf">
+                    <Resume width={24} height={24} />
+                    <p class="ml-2">Resume</p>
+                </SocialLink>
+            </section>
+            <hr class="bg-zinc-800 dark:bg-zinc-400 w-full my-4" />
+            <section id="about-me">
+                <h2 class="text-3xl my-3">About Me</h2>
+            </section>
+            <section id="experience">
+                <h2 class="text-3xl my-3">Experience</h2>
+            </section>
+            <section id="projects">
+                <h2 class="text-3xl my-3">Projects</h2>
+            </section>
+            <section id="skills">
+                <h2 class="text-3xl my-3">Skills</h2>
+            </section>
+            <section id="education">
+                <h2 class="text-3xl my-3">Education</h2>
+                <p class="">
+                    I graduated from my high school in June 2025. I attended the
+                    Arlington Tech program at Arlington Career Center, where I
+                    focused on software development and computer science.
+                </p>
+            </section>
+        </div>
     </main>
 </Layout>
