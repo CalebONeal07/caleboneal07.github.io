@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "caleboneal07.github.io",
+    site: "https://caleboneal07.github.io",
     vite: {
         plugins: [tailwindcss()],
     },
