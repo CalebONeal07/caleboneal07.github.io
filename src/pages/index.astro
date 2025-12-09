@@ -4,12 +4,22 @@ import SocialLink from "../components/SocialLink.astro";
 import SectionScroll from "../components/SectionScroll.astro";
 import ScrollToTop from "../components/ScrollToTop.astro";
 
+import AdventOfCode from "../components/AdventOfCode.astro";
+
 import LinkedIn from "../assets/logos/linkedin.svg";
 import GitHub from "../assets/logos/github.svg";
 import X from "../assets/logos/twitter.svg";
 import Blog from "../assets/logos/blog.svg";
 import Email from "../assets/logos/email.svg";
 import Resume from "../assets/logos/resume.svg";
+
+const sections = [
+    { id: "about-me", title: "About Me" },
+    { id: "experience", title: "Experience" },
+    { id: "projects", title: "Projects" },
+    { id: "skills", title: "Skills" },
+    { id: "education", title: "Education" },
+];
 ---
 
 <Layout>
@@ -17,7 +27,7 @@ import Resume from "../assets/logos/resume.svg";
         id="main"
         class="flex font-mono flex-col dark:text-zinc-400 text-zinc-900 items-center pt-16"
     >
-        <SectionScroll />
+        <SectionScroll sections={sections} />
         <ScrollToTop />
         <div class="w-4xl">
             <section id="title">
@@ -48,24 +58,28 @@ import Resume from "../assets/logos/resume.svg";
                 </SocialLink>
             </section>
             <hr class="bg-zinc-800 dark:bg-zinc-400 w-full my-4" />
-            <section id="about-me">
+            <section id="about-me" class="pb-128">
                 <h2 class="text-3xl my-3">About Me</h2>
             </section>
-            <section id="experience">
+            <section id="experience" class="pb-128">
                 <h2 class="text-3xl my-3">Experience</h2>
             </section>
             <section id="projects">
                 <h2 class="text-3xl my-3">Projects</h2>
+                <AdventOfCode />
             </section>
-            <section id="skills">
+            <section id="skills" class="pb-128">
                 <h2 class="text-3xl my-3">Skills</h2>
             </section>
-            <section id="education">
+            <section id="education" class="pb-128">
                 <h2 class="text-3xl my-3">Education</h2>
-                <p class="">
+                <p class="indent-12">
                     I graduated from my high school in June 2025. I attended the
                     Arlington Tech program at Arlington Career Center, where I
                     focused on software development and computer science.
+                    Additionally, I earned an Associate of Science in Computer
+                    Science degree from Northern Virginia Community College
+                    (NVCC) in May 2025.
                 </p>
             </section>
         </div>
