@@ -1,20 +1,23 @@
 ---
-const sections = [
-    { id: "about-me", title: "About Me" },
-    { id: "experience", title: "Experience" },
-    { id: "projects", title: "Projects" },
-    { id: "skills", title: "Skills" },
-    { id: "education", title: "Education" },
-];
+import type { GetStaticPaths } from "astro";
+interface Props {
+    sections: {
+        id: string;
+        title: string;
+    }[];
+}
+
+const { sections } = Astro.props;
 ---
 
-<div class="fixed align-middle left-8 border-l border-zinc-600 text-left">
+<div class="fixed align-middle left-8 text-left">
     {
         sections.map((item) => (
             <>
                 <a
                     href={`#${item.id}`}
-                    class="inline-flex align-middle px-3 py-4 text-zinc-600 hover:text-zinc-400 rounded-r-lg transition-colors"
+                    data-section={item.id}
+                    class="inline-flex align-middle px-3 py-4 text-zinc-400 dark:text-zinc-600 border-l border-zinc-400 dark:border-zinc-600 hover:border-zinc-500 hover:text-zinc-500 rounded-r-lg transition-colors"
                 >
                     {item.title}
                 </a>
@@ -28,4 +31,65 @@ const sections = [
         top: 50%;
         transform: translateY(-50%);
     }
+
+    .active {
+        border-color: oklch(44.2% 0.017 285.786);
+        color: oklch(44.2% 0.017 285.786);
+        font-weight: bold;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .active {
+            border-color: oklch(70.5% 0.015 286.067);
+            color: oklch(70.5% 0.015 286.067);
+        }
+    }
 </style>
+<script>
+    const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -35% 0px",
+        threshold: 0,
+    };
+
+    const sections = document.querySelectorAll(
+        "section[id], div[id], article[id]",
+    );
+    const navLinks = document.querySelectorAll("a[data-section]");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Remove active class from all links
+                navLinks.forEach((link) => link.classList.remove("active"));
+
+                // Add active class to current link
+                const activeLink = document.querySelector(
+                    `a[data-section="${entry.target.id}"]`,
+                );
+                if (activeLink) {
+                    activeLink.classList.add("active");
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
+    sections.forEach((section) => observer.observe(section));
+
+    // Smooth scroll on click
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href")?.slice(1);
+            const targetSection = document.getElementById(targetId || "");
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }
+        });
+    });
+</script>
