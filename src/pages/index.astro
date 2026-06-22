@@ -9,75 +9,156 @@ import AdventOfCode from "../components/AdventOfCode.astro";
 import LinkedIn from "../assets/logos/linkedin.svg";
 import GitHub from "../assets/logos/github.svg";
 import X from "../assets/logos/twitter.svg";
-import Blog from "../assets/logos/blog.svg";
 import Email from "../assets/logos/email.svg";
 import Resume from "../assets/logos/resume.svg";
 
 const sections = [
-    { id: "about-me", title: "About Me" },
-    { id: "experience", title: "Experience" },
     { id: "projects", title: "Projects" },
     { id: "skills", title: "Skills" },
     { id: "education", title: "Education" },
 ];
+
+const socials = [
+    {
+        link: "https://linkedin.com/in/caleboneal2007",
+        label: "LinkedIn",
+        Icon: LinkedIn,
+    },
+    { link: "https://github.com/CalebONeal07", label: "GitHub", Icon: GitHub },
+    { link: "https://x.com/CalebONeal07", label: "Twitter", Icon: X },
+    { link: "mailto:caleboneal07@gmail.com", label: "Email", Icon: Email },
+    { link: "/resume.pdf", label: "Resume", Icon: Resume },
+];
+
+const skills = {
+    Languages: ["C / C++", "Rust", "Python", "TypeScript", "Go", "Verilog"],
+    "Tools & Platforms": ["Git", "Linux", "Docker", "Astro", "Node.js"],
+    "Hardware & EE": [
+        "Embedded Systems",
+        "FPGAs",
+        "Digital Logic",
+        "Circuit Design",
+    ],
+};
 ---
 
 <Layout>
-    <main
-        id="main"
-        class="flex font-mono flex-col dark:text-zinc-400 text-zinc-900 items-center pt-16"
-    >
-        <SectionScroll sections={sections} />
-        <ScrollToTop />
-        <div class="w-4xl">
-            <section id="title">
-                <h1 class="text-6xl mt-8 mb-4">Caleb O'Neal</h1>
-                <SocialLink link="https://linkedin.com/in/caleboneal2007">
-                    <LinkedIn width={24} height={24} />
-                    <p class="ml-2">LinkedIn</p>
-                </SocialLink>
-                <SocialLink link="https://github.com/CalebONeal07">
-                    <GitHub width={24} height={24} />
-                    <p class="ml-2">GitHub</p>
-                </SocialLink>
-                <SocialLink link="https://x.com/CalebONeal07">
-                    <X width={24} height={24} />
-                    <p class="ml-2">Twitter</p>
-                </SocialLink>
-                <SocialLink link="mailto:caleboneal07@gmail.com">
-                    <Email width={24} height={24} />
-                    <p class="ml-2">Email</p>
-                </SocialLink>
-                <SocialLink link="/resume.pdf">
-                    <Resume width={24} height={24} />
-                    <p class="ml-2">Resume</p>
-                </SocialLink>
-            </section>
-            <hr class="bg-zinc-800 dark:bg-zinc-400 w-full my-4" />
-            <section id="about-me" class="pb-128">
-                <h2 class="text-3xl my-3">About Me</h2>
-            </section>
-            <section id="experience" class="pb-128">
-                <h2 class="text-3xl my-3">Experience</h2>
-            </section>
-            <section id="projects">
-                <h2 class="text-3xl my-3">Projects</h2>
+    <SectionScroll sections={sections} />
+    <ScrollToTop />
+
+    <main id="main" class="mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
+        <!-- Hero -->
+        <section id="title" class="animate-rise">
+            <h1
+                class="mt-5 bg-linear-to-br from-neutral-900 to-neutral-500 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent dark:from-white dark:to-neutral-400 sm:text-6xl"
+            >
+                Caleb O'Neal
+            </h1>
+            <p
+                class="mt-4 max-w-xl text-lg text-neutral-600 dark:text-neutral-400"
+            >
+                B.S. Computer Engineering student at the&nbsp;
+                <span class="font-medium text-neutral-800 dark:text-neutral-200"
+                    >University of Virginia</span
+                >, exploring systems, hardware, and a new programming language
+                every December.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+                {
+                    socials.map(({ link, label, Icon }) => (
+                        <SocialLink link={link}>
+                            <Icon width={18} height={18} />
+                            {label}
+                        </SocialLink>
+                    ))
+                }
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about-me" class="mt-16">
+            <h2
+                class="flex items-center gap-3 text-sm font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500"
+            >
+                About
+            </h2>
+            <p
+                class="mt-4 leading-relaxed text-neutral-600 dark:text-neutral-300"
+            >
+                Hi, I'm Caleb — a computer engineering student who enjoys
+                working across the stack, from low-level hardware and embedded.
+                I'm always picking up new languages and tools, and I document
+                the journey through projects and the occasional blog post.
+            </p>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="mt-16 scroll-mt-20">
+            <h2
+                class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100"
+            >
+                Projects
+            </h2>
+            <div class="mt-6">
                 <AdventOfCode />
-            </section>
-            <section id="skills" class="pb-128">
-                <h2 class="text-3xl my-3">Skills</h2>
-            </section>
-            <section id="education" class="pb-128">
-                <h2 class="text-3xl my-3">Education</h2>
-                <p class="indent-12">
-                    I graduated from my high school in June 2025. I attended the
-                    Arlington Tech program at Arlington Career Center, where I
-                    focused on software development and computer science.
-                    Additionally, I earned an Associate of Science in Computer
-                    Science degree from Northern Virginia Community College
-                    (NVCC) in May 2025.
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mt-16 scroll-mt-20">
+            <h2
+                class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100"
+            >
+                Skills
+            </h2>
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                {
+                    Object.entries(skills).map(([category, items]) => (
+                        <div class="rounded-2xl border border-neutral-200 bg-white/70 p-5 backdrop-blur dark:border-neutral-800 dark:bg-neutral-900/50">
+                            <h3 class="text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+                                {category}
+                            </h3>
+                            <ul class="mt-3 flex flex-wrap gap-2">
+                                {items.map((item) => (
+                                    <li class="rounded-md bg-neutral-100 px-2.5 py-1 font-mono text-xs text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="mt-16 scroll-mt-20">
+            <h2
+                class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100"
+            >
+                Education
+            </h2>
+            <div
+                class="mt-6 rounded-2xl border border-neutral-200 bg-white/70 p-6 backdrop-blur dark:border-neutral-800 dark:bg-neutral-900/50"
+            >
+                <div
+                    class="flex flex-wrap items-baseline justify-between gap-2"
+                >
+                    <h3
+                        class="text-lg font-semibold text-neutral-900 dark:text-neutral-100"
+                    >
+                        University of Virginia
+                    </h3>
+                    <span
+                        class="font-mono text-xs text-neutral-400 dark:text-neutral-500"
+                    >
+                        Expected 2029
+                    </span>
+                </div>
+                <p class="mt-1 text-neutral-600 dark:text-neutral-400">
+                    B.S. in Computer Engineering
                 </p>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 </Layout>

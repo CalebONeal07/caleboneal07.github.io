@@ -1,6 +1,8 @@
 ---
 title: 'Markdown Test'
 author: "Caleb O'Neal <caleboneal07@gmail.com>"
+description: "Test"
+pubDate: "2026-4-1"
 ---
 # Heading 1
 ## Heading 2

@@ -1,13 +1,16 @@
 ---
-import ThemeSwitcher from "../components/ThemeSwitcher.astro";
-import MatrixBackground from "../components/MatrixBackground.astro";
-
-// Fonts
-import "@fontsource/ibm-plex-serif";
-import "@fontsource-variable/ibm-plex-sans";
-import "@fontsource/ibm-plex-mono";
-
 import "../styles/theme.css";
+import Background from "../components/Background.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "Caleb O'Neal | Portfolio",
+    description = "Caleb O'Neal — B.S. Computer Engineering student at the University of Virginia. Portfolio and blog.",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,16 +18,31 @@ import "../styles/theme.css";
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Caleb O'Neal | Portfolio</title>
-        <link rel="icon" type="image/svg" href="/favicon.svg" />
+        <meta name="description" content={description} />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
     </head>
-    <body class="bg-zinc-200 dark:bg-zinc-900">
-        <ThemeSwitcher />
-        <MatrixBackground />
+    <body
+        class="relative min-h-screen bg-neutral-50 text-neutral-800 antialiased dark:bg-neutral-950 dark:text-neutral-200"
+    >
+        <Background />
+
         <slot />
-        <footer class="text-center pb-4">
-            <p class="text-xs text-zinc-400 dark:text-zinc-700">
-                Copywright © 2025 Caleb O'Neal
+
+        <footer
+            class="mt-24 border-t border-neutral-200/70 py-8 dark:border-neutral-800/70"
+        >
+            <p
+                class="text-center text-xs text-neutral-400 dark:text-neutral-600"
+            >
+                &copy; 2026 Caleb O'Neal · Built with Astro
             </p>
         </footer>
     </body>
